@@ -11,16 +11,15 @@
 (function() {
 	"use strict";
 
-	const speed = 50;
+	let speed = 50;
 	let intervalID = null;
 
 	canvas.addEventListener("mousedown", ({button}) => {
 		if (button === 0) // left click
 			wsSend(UINT8_CACHE[17]);
-		while (button === 2) { // right click
-			setInterval(function() {
-				wsSend(UINT8_CACHE[21]);
-			}, 100)
+		if (button === 2) { // right click
+            wsSend(UINT8_CACHE[21]);
+            intervalID = setInterval(function(){wsSend(UINT8_CACHE[21]);}, speed);
 		}
 	});
 	addEventListener("mouseup", ({button}) => {
