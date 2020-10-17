@@ -18,7 +18,9 @@
 		if (button === 0) // left click
 			wsSend(UINT8_CACHE[17]);
 		while (button === 2) { // right click
-			wsSend(UINT8_CACHE[21]);
+			setInterval(function() {
+				wsSend(UINT8_CACHE[21]);
+			}, 100)
 		}
 	});
 	addEventListener("mouseup", ({button}) => {
