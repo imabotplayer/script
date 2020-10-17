@@ -17,9 +17,8 @@
 	canvas.addEventListener("mousedown", ({button}) => {
 		if (button === 0) // left click
 			wsSend(UINT8_CACHE[17]);
-		if (button === 2) { // right click
+		while (button === 2) { // right click
 			wsSend(UINT8_CACHE[21]);
-			intervalID = setInterval(core.eject, speed);
 		}
 	});
 	addEventListener("mouseup", ({button}) => {
